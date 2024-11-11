@@ -1,0 +1,31 @@
+.hamburger-menu {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 2;
+}
+
+.nav-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1c1919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font-bebas-neue);
+  color: #ec315a;
+  font-size: 48px;
+  z-index: 1;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:visited {
+  color: #ec315a;
+}
