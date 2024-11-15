@@ -1,16 +1,23 @@
-import { useState } from "react";
 import "../BookingPage.css";
 
 interface WhenFormProps {
   setNumberOfPeople: React.Dispatch<React.SetStateAction<number>>;
+  onDateChange: (date: string) => void;
+  onTimeChange: (time: string) => void;
+  onLaneChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-export const WhenForm: React.FC<WhenFormProps> = ({ setNumberOfPeople }) => {
+export const WhenForm: React.FC<WhenFormProps> = ({
+  setNumberOfPeople,
+  onDateChange,
+  onTimeChange,
+  onLaneChange,
+}) => {
   const generateDateOption = () => {
     const dates = [];
     const today = new Date();
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 30; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
 
@@ -26,7 +33,7 @@ export const WhenForm: React.FC<WhenFormProps> = ({ setNumberOfPeople }) => {
 
   const generateTimeOption = () => {
     const time = [];
-    for (let hour = 0; hour < 24; hour++) {
+    for (let hour = 12; hour < 21; hour++) {
       for (let minute of [0, 30]) {
         const formattedTime = `${hour.toString().padStart(2, "0")}:${minute
           .toString()
@@ -83,7 +90,12 @@ export const WhenForm: React.FC<WhenFormProps> = ({ setNumberOfPeople }) => {
       <div className="input-container">
         {/* Datum */}
         <div className="input-wrapper short-input">
-          <select id="date" className="input" defaultValue="">
+          <select
+            id="date"
+            className="input"
+            defaultValue=""
+            onChange={(e) => onDateChange(e.target.value)}
+          >
             <option value="" disabled hidden></option>
             <option value="option1">Välj Datum</option>
             {generateDateOption()}
@@ -95,7 +107,12 @@ export const WhenForm: React.FC<WhenFormProps> = ({ setNumberOfPeople }) => {
 
         {/* Tid */}
         <div className="input-wrapper short-input">
-          <select id="time" className="input" defaultValue="">
+          <select
+            id="time"
+            className="input"
+            defaultValue=""
+            onChange={(e) => onTimeChange(e.target.value)}
+          >
             <option value="" disabled hidden></option>
             <option value="option1">Välj Tid</option>
             {generateTimeOption()}
@@ -124,7 +141,12 @@ export const WhenForm: React.FC<WhenFormProps> = ({ setNumberOfPeople }) => {
 
         {/* BANOR */}
         <div className="input-wrapper long-input">
-          <select id="long2" className="input" defaultValue="">
+          <select
+            id="long2"
+            className="input"
+            defaultValue=""
+            onChange={onLaneChange}
+          >
             <option value="" disabled hidden></option>
             <option value="option1"></option>
             {generateLaneOptions()}

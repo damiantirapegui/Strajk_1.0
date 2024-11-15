@@ -2,6 +2,13 @@
   margin-top: 108px;
 }
 
+.confirm-logo::after {
+  content: "SEE YOU SOON!";
+  font-family: var(--font-bebas-neue);
+  font-size: 60px;
+  color: #ec315a;
+}
+
 .on-confirm {
   margin-top: 343px;
 }
@@ -36,6 +43,11 @@
   border: 1px solid #441d81;
   border-radius: 5px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-family: var(--font-work-sans);
+  font-size: 24px;
 }
 
 .total-cost {
@@ -50,4 +62,36 @@
   font-size: 24px;
   font-weight: 700;
   color: #ec315a;
+}
+
+.confirmation-error {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  color: red;
+  padding: 0 12px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.button-for-confirmation-error {
+  width: 344px;
+  height: 64px;
+  background-color: #ec315a;
+  font-family: var(--font-work-sans);
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10rem;
 }

@@ -1,0 +1,20 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.dynamic-button {
+  width: 344px;
+  height: 64px;
+  background-color: #ec315a;
+  font-family: var(--font-work-sans);
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./NavMenu.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const menuVariants = {
@@ -15,6 +15,15 @@ export const NavMenu = () => {
     setShowMenu((prevState) => !prevState);
   };
 
+  const navigate = useNavigate();
+
+  const handleNavigateToConfirm = () => {
+    navigate("/confirm");
+  };
+
+  const handleNavigateToBooking = () => {
+    navigate("/booking");
+  };
   return (
     <>
       <section className="nav-menu-section">
@@ -35,12 +44,12 @@ export const NavMenu = () => {
           variants={menuVariants}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <Link className="link" to="/booking">
+          <p className="link" onClick={handleNavigateToBooking}>
             BOOKING
-          </Link>
-          <Link className="link" to="/confirm">
+          </p>
+          <p className="link" onClick={handleNavigateToConfirm}>
             CONFIRMATION
-          </Link>
+          </p>
         </motion.nav>
       </section>
     </>

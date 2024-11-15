@@ -2,9 +2,15 @@ import "../BookingPage.css";
 
 interface ShoeFormProps {
   numberOfPeople: number;
+  setShoesSize: (size: number[]) => void;
+  shoesSize: number[];
 }
 
-export const ShoesForm: React.FC<ShoeFormProps> = ({ numberOfPeople }) => {
+export const ShoesForm: React.FC<ShoeFormProps> = ({
+  numberOfPeople,
+  setShoesSize,
+  shoesSize,
+}) => {
   const generateShoeSizeOptions = () => {
     const shoeSizes = [];
     for (let size = 36; size < 45; size++) {
@@ -15,6 +21,12 @@ export const ShoesForm: React.FC<ShoeFormProps> = ({ numberOfPeople }) => {
       );
     }
     return shoeSizes;
+  };
+
+  const handleShoeSizeChange = (index: number, value: number) => {
+    const updatedShoeSizes = [...shoesSize];
+    updatedShoeSizes[index] = value;
+    setShoesSize(updatedShoeSizes);
   };
 
   return (
@@ -29,7 +41,14 @@ export const ShoesForm: React.FC<ShoeFormProps> = ({ numberOfPeople }) => {
       <div className="input-container-shoes">
         {[...Array(numberOfPeople)].map((_, index) => (
           <div key={index} className="input-wrapper short-input">
-            <select id={`shoeSize-${index}`} className="input" defaultValue="">
+            <select
+              id={`shoeSize-${index}`}
+              className="input"
+              defaultValue=""
+              onChange={(e) =>
+                handleShoeSizeChange(index, parseInt(e.target.value))
+              }
+            >
               <option value="" disabled hidden>
                 Välj Skostorlek
               </option>
